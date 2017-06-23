@@ -1,0 +1,76 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    font-family: "Microsoft YaHei";
+}
+a{
+    text-decoration: none;
+    color:#333;
+}
+.title {
+    text-align: center;
+    font-size: 40px;
+    max-width: 1200px;
+    width: 100%;
+    margin: 50px auto;
+    color: #333;
+}
+.title .back{
+    font-size:18px;
+    float: left;
+    line-height: 52px;
+}
+.album-wrap {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.album-wrap .album-box {
+    display: block;
+    width: calc(23% - 24px);
+    margin: 20px 1%;
+    float: left;
+    border: 2px solid #4d5559;
+    border-radius: 10px;
+    padding: 10px 10px 0;
+    -webkit-transition: all .6s;
+    transition: all .6s;
+}
+.album-wrap .album-box:hover{
+    box-shadow: 2px 4px 4px #4d5559;
+}
+
+.album-wrap .album-box .img-box {
+    height: 140px;
+    overflow: hidden;
+}
+
+.album-wrap .album-box .img-box img {
+    width: 100%;
+}
+
+.album-wrap .album-box p {
+    font-size: 18px;
+    text-align: center;
+    margin: 2px 0;
+}
+
+.album-detils-wrap {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    -moz-column-count: 3;
+    -webkit-column-count: 3;
+    column-count: 3;
+    -moz-column-gap: 20px;
+    -webkit-column-gap: 20px;
+    column-gap: 20px;
+}
+
+.album-detils-wrap .album-detils-box {
+    padding: 14px;
+}
