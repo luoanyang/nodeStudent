@@ -23,7 +23,7 @@ var server = http.createServer(function (req, res) {
             console.log(stats);
         });
         var extname = path.extname(pathname);
-        getMime(extname,function(){
+        getMime(extname,function(mime){
             res.writeHead(200, {'Content-type': mime});
         });
         res.end(data);
@@ -39,6 +39,7 @@ function getMime(extname,callback) {
             return;
         }
         var mimeObj = JSON.parse(data);
-        return mimeObj[extname];
+        var mime = mimeObj[extname];
+        callback(mime);
     });
 }
