@@ -8,7 +8,7 @@ var server = http.createServer(function(req,res){
     var fileUrl = "./"+path.normalize("static/" + pathname);
     //判断用户输入的是文件夹还是文件，如果是文件夹就转到文件夹下的index.html
     if(pathname.indexOf(".") == -1){
-        fileUrl += "/index.html";
+        fileUrl += "/index.ejs";
     }
 
     //得到拓展名
@@ -18,7 +18,7 @@ var server = http.createServer(function(req,res){
         //文件不存在
         if(err){
             console.log(1)
-            fs.readFile('./static/404.html',function(err,data){
+            fs.readFile('./static/404.ejs',function(err,data){
                 res.writeHead(404,{'Content-type':'text/html;charest=utf8'});
                 res.end(data);
             });

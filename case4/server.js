@@ -4,30 +4,37 @@
 const formidable = require('formidable');
 const http = require('http');
 const path = require('path');
-const ejs = require('ejs');
 const url = require('url');
 const fs = require('fs');
 var router = require('./router.js');
 
 var server = http.createServer(function (req, res) {
     var pathname = url.parse(req.url).pathname;
-    if(pathname == '/'){
-        pathname ='/views/index.html';
+    if(pathname == '/favicon.ico'){
+        return;
     }
-    fs.readFile(__dirname + pathname, function (err, data) {
-        if (err) {
-            router.show404(req, res);
-            return;
-        }
-        fs.stat(__dirname+'/uploads',function(err,stats){
-            console.log(stats);
+    //主页
+    if(pathname == '/'){
+        router.showIndex(req,res);
+    //详情页
+    }else if(/detail/.test(pathname)){
+        router.showDetail(req,res);
+    //资源页
+    }else{
+        fs.readFile(__dirname + pathname, function (err, data) {
+            if (err) {
+                router.show404(req, res);
+                return;
+            }
+            var extname = path.extname(pathname);
+            getMime(extname,function(mime){
+                res.writeHead(200, {'Content-type': mime});
+            });
+
+            res.end(data);
         });
-        var extname = path.extname(pathname);
-        getMime(extname,function(mime){
-            res.writeHead(200, {'Content-type': mime});
-        });
-        res.end(data);
-    });
+    }
+
 });
 
 server.listen(80);

@@ -73,4 +73,24 @@ a{
 
 .album-detils-wrap .album-detils-box {
     padding: 14px;
+    border: 1px solid #999;
+    border-radius: 10px;
+    break-inside: avoid;
+}
+
+.album-detils-wrap .album-detils-box img{
+    width:100%;
+}
+
+.upload-wrap{
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.upload-wrap p{
+    margin-top: 50px;
+}
+.upload-wrap .submit{
+    padding:0 20px;
 }

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>相册主页</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+<h2 class="title">相册</h2>
+<div class="album-wrap">
+    <% ablumFolder.forEach(function(el, ind){ %>
+    <a href=<%= 'detail/'+el %> class="album-box">
+        <div class="img-box">
+            <img src="../static/img/1.jpg">
+        </div>
+        <p><%= el %></p>
+    </a>
+    <% }) %>
+</div>
+</body>
+</html>
