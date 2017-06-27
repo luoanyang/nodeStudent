@@ -7,7 +7,9 @@
 </head>
 <body>
 <h2 class="title">相册</h2>
+
 <div class="album-wrap">
+    <p><a href="/upload" class="upload-img">上传图片</a></p>
     <% ablumFolder.forEach(function(el, ind){ %>
     <a href=<%= 'detail/'+el %> class="album-box">
         <div class="img-box">

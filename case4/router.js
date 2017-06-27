@@ -5,8 +5,12 @@ exports.showIndex = showIndex;
 exports.showDetail = showDetail;
 exports.showUpload = showUpload;
 exports.show404 = show404;
+exports.upload = upload;
 
+const formidable = require('formidable');
+const sd = require('silly-datetime');
 const ejs = require('ejs');
+const path = require('path');
 const fs = require('fs');
 
 function showIndex(req, res) {
@@ -67,7 +71,31 @@ function showDetail(req, res) {
 }
 
 function showUpload(req, res) {
+    var ablumFolder = [];
 
+    fs.readdir(__dirname + '/uploads/', function (err, files) {
+        files.forEach(function (el, ind) {
+            if (!/\./.test(el)) {
+                ablumFolder.push(el);
+            }
+        });
+
+        fs.readFile(__dirname + '/views/upload.ejs', function (err, data) {
+            if (err) {
+                fs.readFile(__dirname + "/views/404.ejs", function (err, data) {
+                    res.writeHead(404, {'Content-type': 'text/html;charset=utf8'});
+                    res.end(data);
+                })
+                return;
+            }
+            var template = data.toString();
+            var html = ejs.render(template, {'ablumFolder': ablumFolder});
+            res.writeHead(200, {'Content-type': 'text/html;charset=utf8'});
+            res.end(html);
+        });
+
+
+    });
 }
 
 function show404(req, res) {
@@ -77,3 +105,20 @@ function show404(req, res) {
     })
 }
 
+function upload(req,res){
+    var form = new formidable.IncomingForm();
+    form.uploadDir ='./uploads/';
+
+    form.parse(req, function(err, fields, files) {
+        var time = sd.format(new Date(),'YYYYMMDDHHmm')
+        var random = Math.random()*8999+10000;
+        var olddir ='./'+files.imgs.path;
+        var nowdir = './uploads/'+fields.folder+'/'+time+random+path.extname(files.imgs.name);
+        fs.rename(olddir,nowdir,function(){
+            var html = "<script>alert('上传成功!');location.href='/'</script>"
+            res.writeHead(200, {'content-type': 'text/html'});
+            res.end(html);
+        })
+
+    });
+}

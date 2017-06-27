@@ -14,3 +14,6 @@
 1. 对ejs这个传统模版引擎的使用有个简单的了解。
 
  
+## case4
+1.用了ejs、formidable、silly-datetime模块和原生模块实现了一个简单的相册功能
+![示例图片](/resoure/case4.gif)

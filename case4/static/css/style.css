@@ -94,3 +94,11 @@ a{
 .upload-wrap .submit{
     padding:0 20px;
 }
+
+.upload-img{
+    margin:20px 0;
+}
+
+.upload-img:hover{
+    color:orangered;
+}

@@ -8,17 +8,19 @@
 <body>
 <h2 class="title"><a class="back" href="javascript:history.back()">back ></a>上传图片</h2>
 <div class="upload-wrap">
-    <form action="/upload" method="post">
+    <form action="/upload" enctype="multipart/form-data" method="post">
         <p>
             <label>请选择上传的相册
                 <select name="folder" id="">
-                    <option value="11">11</option>
+                    <% ablumFolder.forEach(function(el,ind){ %>
+                        <option value="<%= el %>" > <%= el %></option>
+                    <% }); %>
                 </select>
             </label>
         </p>
         <p>
             <label>请选择上传的图片：
-                <input type="file" name="imgs">
+                <input type="file" name="imgs" multiple="multiple">
             </label>
         </p>
         <p>
