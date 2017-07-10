@@ -16,4 +16,4 @@
  
 ## case4
 1.用了ejs、formidable、silly-datetime模块和原生模块实现了一个简单的相册功能
-![示例图片](/resoure/case4.gif)
+![示例图片](/source/case4.gif)
